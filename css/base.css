@@ -1,0 +1,185 @@
+/* ══════════════════════════════════════════════
+   BASE — Variables, reset, fonts, éléments globaux
+   ══════════════════════════════════════════════ */
+
+:root {
+    --bg-dark: hsl(0,0%,0%);
+    --bg: hsl(0,0%,10%);
+    --bg-light: hsl(0,0%,20%);
+    --text: hsl(0,0%,90%);
+    --text-muted: hsl(0,0%,70%);
+    --accent: #2a8e59;
+    --danger: #bf4545;
+    --success: #139b10;
+    --secondary: #556759;
+    --border: hsla(0, 0%, 100%, 0.4);
+    --border-muted: hsla(0, 0%, 70%, 0.2);
+    --shadow: 0px 5px 20px 5px hsla(0, 0%, 0%, 0.4);
+
+    --glass-bg: hsla(0, 0%, 60%, 0.2);
+    --glass-dark: hsla(0, 0%, 10%, 0.3);
+    --glass-blur: blur(14px);
+    --glass-border: 1px solid hsla(0, 0%, 80%, 0.6);
+
+    --transition-fast: 0.1s ease;
+    --transition: 0.3s ease;
+
+    --font-title: 'Chillax', sans-serif;
+    --font-sans: 'Alpino', sans-serif;
+
+    --font-xs: 0.6rem;
+    --font-s: 0.9rem;
+    --font-m: 1.1rem;
+    --font-l: 1.3rem;
+
+    --radius-s: 8px;
+    --radius-l: 16px;
+
+    --space-xs: .6rem;
+    --space-s: 1em;
+    --space-m: 1.5em;
+
+    --navbar-height: 75px;
+    --sidebar-width: 220px;
+}
+
+body[data-theme="light"] {
+    --bg-dark: hsl(0, 0%, 80%);
+    --bg: hsl(0,0%,85%);
+    --bg-light: hsl(0,0%,90%);
+    --text: hsl(0,0%,10%);
+    --text-muted: hsl(0,0%,30%);
+    --accent: #2a8e59;
+    --danger: #f87171;
+    --success: #139b10;
+    --border: hsla(0, 0%, 100%, 0.4);
+    --border-muted: hsla(0, 0%, 70%, 0.2);
+}
+
+/* ─── Fonts ─── */
+
+@font-face {
+    font-family: 'Chillax';
+    src: url(../assets/fonts/Chillax-Variable.woff2);
+}
+
+@font-face {
+    font-family: 'Alpino';
+    src: url(../assets/fonts/Alpino-Variable.woff2);
+}
+
+/* ─── Reset ─── */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ─── Body ─── */
+
+body {
+    min-height: 100%;
+    width: 100%;
+    background:
+        radial-gradient(circle at top left, hsla(145, 60%, 25%, 0.15), transparent 30%),
+        radial-gradient(circle at bottom right, hsla(220, 60%, 25%, 0.12), transparent 35%),
+        var(--bg-dark);
+    font-family: var(--font-sans);
+}
+
+/* ─── Typographie ─── */
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-title);
+}
+
+app-bold {
+    font-weight: 700;
+}
+
+/* ─── Performance hints ─── */
+
+.card,
+.sidebar,
+.navbar,
+.task-types label,
+button {
+    will-change: transform;
+}
+
+/* ─── Éléments globaux ─── */
+
+button {
+    color: var(--text);
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: var(--font-sans);
+    font-size: var(--font-s);
+}
+
+.btn-primary {
+    background: var(--accent);
+}
+
+.btn-secondary {
+    background: var(--secondary);
+}
+
+button:hover {
+    filter: brightness(120%);
+}
+
+input, button {
+    padding: 10px;
+    border: none;
+    border-radius: var(--radius-s);
+}
+
+input {
+    background: var(--bg-light);
+    color: var(--text);
+    border: 1px solid var(--border-muted);
+    width: 100%;
+}
+
+input::placeholder {
+    color: var(--text-muted);
+}
+
+input:focus {
+    outline: 2px solid var(--accent);
+}
+
+textarea {
+    background: var(--bg-light);
+    color: var(--text);
+    border: 1px solid var(--border-muted);
+    border-radius: var(--radius-s);
+    padding: 10px;
+    resize: none;
+    font-family: var(--font-sans);
+    width: 100%;
+    font-size: var(--font-m);
+}
+
+textarea:focus {
+    outline: 2px solid var(--accent);
+}
+
+/* ─── Scrollbar ─── */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsla(0,0%,100%,0.12);
+    border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsla(0,0%,100%,0.18);
+}

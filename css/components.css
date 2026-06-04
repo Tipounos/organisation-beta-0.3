@@ -1,0 +1,17 @@
+/* ══════════════════════════════════════════════
+   COMPONENTS — Card, Popups
+   ══════════════════════════════════════════════ */
+
+/* ─── Card ─── */
+
+.card {
+    background: var(--bg);
+    padding: 20px;
+    border-radius: var(--radius-l);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1px solid var(--border);
+    height: fit-content;
+}
+

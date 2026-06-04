@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organiser</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/notifications.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/4.0.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+</head>
+<body data-theme="dark">
+
+<!-- Overlay backdrop (mobile only) -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="dashboard">
+
+  <div class="sidebar" id="sidebar">
+    <h2>Dashboard</h2>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="settings.html">Paramètres</a></li>
+    </ul>
+  </div>
+
+  <app-navbar></app-navbar>
+  <!-- 
+  <div class="navbar">
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="logo">
+      <h3>Bienvenue</h3>
+    </div>
+    
+    <div class="time-infos">
+      <span id="date"></span>
+      <span id="time"></span>        
+    </div>
+  </div> -->
+
+  <div class="main">
+
+    <div class="card todo-card">
+      <h3>To-do</h3>
+      <!-- Formulaire desktop -->
+      <div class="desktop-create-task-form task-form">
+        <input type="text" class="taskInput desktop" placeholder="Ajouter une tâche">
+        <div class="task-types desktop">
+          <label><input type="radio" name="task-type-desktop" class="task-type" data-type="sport"> Sport</label>
+          <label><input type="radio" name="task-type-desktop" class="task-type" data-type="work"> Travail</label>
+          <label><input type="radio" name="task-type-desktop" class="task-type" data-type="other" checked> Autre</label>
+        </div>
+        <button id="add-task-btn" class="btn-primary addTask">Ajouter</button>      
+      </div>
+
+      <ul class="tasks" id="taskList"></ul>
+      <div class="see-more-wrapper">
+        
+        <span class="see-more" id="todo-see-more">
+          <i class="fi fi-br-arrow-up-right see-more-icon"></i>
+          See more ...
+        </span>
+      </div>
+      
+    </div>
+
+    <div class="card stats-card">
+      <h3>Stats</h3>
+      <div class="stats-wrapper">
+        <div class="stat">
+          <h4 data-type="sport">Sport</h4>
+          <span id="sport-completed" class="xp">0</span>
+          <div class="level-bar-wrapper">
+            <div class="level-bar" id="sport-bar" data-type="sport"></div>
+          </div>
+          <span class="level" data-type="sport"></span>
+        </div>
+        <div class="stat">
+          <h4 data-type="work">Travail</h4>
+          <span id="work-completed" class="xp">0</span>
+          <div class="level-bar-wrapper">
+            <div class="level-bar" id="work-bar" data-type="work"></div>
+          </div>
+          <span class="level" data-type="work">0</span>
+        </div>  
+        <div class="stat">
+          <h4 data-type="other">Autre</h4>
+          <span id="other-completed" class="xp">0</span>
+          <div class="level-bar-wrapper">
+            <div class="level-bar" id="other-bar" data-type="other"></div>
+          </div>
+          <span class="level" data-type="other">0</span>
+        </div>      
+      </div>
+      <!-- <button onclick="localStorage.clear()">Clear localStorage</button> -->
+    </div>
+
+
+    <div class="card notes-card">
+      <h3>Notes</h3>
+      <textarea rows="5" placeholder="Notes ..." id="notes"></textarea>
+    </div>
+
+    <!-- Popups (not using notifications.js because these popups are different depending of screen size) -->
+
+    <div class="levelUpPopup popup" id="levelUpPopup">
+      <div class="popupText">
+        <h1>Bravo !</h1>
+        <p>Vous avez atteint le niveau <span class="level-congrats"></span> en <span class="type-congrats"></span></p>        
+      </div>
+
+      <button class="close btn-primary" data-target="levelUpPopup">Fermer</button>
+    </div>
+
+    <!-- Popup mobile -->
+    <div class="mobile-create-task-form popup task-form" id="createTaskPopup">
+      <input type="text" class="taskInput" placeholder="Ajouter une tâche">
+      <div class="task-types">
+        <label><input type="radio" name="task-type-mobile" class="task-type" data-type="sport"> Sport</label>
+        <label><input type="radio" name="task-type-mobile" class="task-type" data-type="work"> Travail</label>
+        <label><input type="radio" name="task-type-mobile" class="task-type" data-type="other" checked> Autre</label>
+      </div>
+      <div class="popup-btns">
+        <button class="close btn-primary addTask" data-target="createTaskPopup">Ajouter</button>
+        <button class="close btn-secondary" data-target="createTaskPopup">Fermer</button>        
+      </div>
+
+    </div>
+
+  </div>    
+</div>
+
+<!-- <footer>
+  Icônes UI par <a href="https://www.flaticon.com/uicons">Flaticon</a>
+</footer> -->
+
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/global.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+/* ══════════════════════════════════════════════
+   LAYOUT — Dashboard grid, navbar, sidebar, main, overlay
+   ══════════════════════════════════════════════ */
+
+/* ─── Dashboard ─── */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    grid-template-rows: var(--navbar-height) 1fr;
+    height: 100vh;
+    background:
+        radial-gradient(circle at top left, hsla(145, 60%, 25%, 0.5), transparent 30%),
+        radial-gradient(circle at bottom right, hsla(220, 60%, 25%, 0.5), transparent 35%),
+        var(--bg-dark);
+    color: var(--text);
+}
+
+/* ─── Main content ─── */
+
+.main {
+    grid-column: 2;
+    grid-row: 2;
+    padding: 20px;
+    padding-bottom: 80px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 48px;
+    height: calc(100vh - var(--navbar-height));
+    overflow-y: auto;
+    align-content: start;
+    background-color: transparent;
+}
+
+/* ─── Sidebar ─── */
+
+.sidebar {
+    grid-column: 1;
+    grid-row: 2;
+    background-color: transparent;
+    padding: 20px;
+    height: calc(100vh - var(--navbar-height));
+    overflow-y: auto;
+    border-right: 1px solid var(--border-muted);
+    transition: transform var(--transition);
+    z-index: 20;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    margin: 15px 0;
+}
+
+.sidebar li a {
+    cursor: pointer;
+    opacity: 0.8;
+    padding: 8px 10px;
+    border-radius: var(--radius-s);
+    transition: background var(--transition-fast), opacity var(--transition-fast);
+    width: 100%;
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+}
+
+.sidebar li a:hover {
+    opacity: 1;
+    background: var(--bg-light);
+}
+
+/* ─── Navbar ─── */
+
+.navbar {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: var(--glass-dark);
+    backdrop-filter: var(--glass-blur);
+    position: fixed;
+    top: 0;
+    z-index: 30;
+    border-bottom: 1px solid var(--border-muted);
+    width: 100%;
+    height: var(--navbar-height);
+}
+
+/* ─── Hamburger ─── */
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-s);
+    transition: background var(--transition-fast);
+}
+
+.menu-toggle:hover {
+    background: var(--bg-light);
+    filter: none;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform var(--transition), opacity var(--transition);
+}
+
+.menu-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2) { opacity: 0; }
+.menu-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ─── Time infos ─── */
+
+.time-infos {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    text-transform: capitalize;
+    font-size: var(--font-l);
+}
+
+/* ─── Overlay (backdrop mobile) ─── */
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: hsla(0,0%,0%,0.5);
+    z-index: 15;
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    transition: opacity var(--transition);
+}
+
+.sidebar-overlay.visible {
+    opacity: 1;
+}
+
+/* ─── Helpers responsive ─── */
+
+.desktop {
+    display: flex;
+}
+
+.mobile {
+    display: none;
+}
