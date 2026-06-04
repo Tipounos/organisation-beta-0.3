@@ -5,6 +5,7 @@ import { loadTasksFromStorage, loadProgressionFromStorage, saveTasks } from "./s
 import { addTask, setTasks, renderTasks, initTaskEvents, setProgressionRef } from "./tasks.js";
 import { renderProgression, initLevels, snapshotPreviousLevels } from "./progression.js";
 import { initNotes } from "./notes.js";
+import { initAddTaskButtons } from "./ui.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     console.log("main.js init")

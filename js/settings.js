@@ -1,7 +1,9 @@
 import { clearStorage } from "./storage.js";
 
+let vibrations
+
 export function canVibrate() {
-    let vibrations = localStorage.getItem("vibrations") || false
+    vibrations = localStorage.getItem("vibrations") || false
     vibrations = vibrations === "true"    
 
     return vibrations
@@ -15,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Init settings
     canVibrate()
     
-    toggleVibrationsEl.checked = vibrations
+    toggleVibrationsEl.checked = canVibrate()
 
     const clearStorageEl = document.getElementById("clear-storage")
 

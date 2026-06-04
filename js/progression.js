@@ -1,11 +1,11 @@
 import {notify, createPopup} from "./notifications.js"
-import {canVibrate} from "./settings.js"
 
 // ====== PROGRESSION ======
 // XP, niveaux, animations de level-up
 
 let level = {};
 let previousLevels = {};
+const vibrations = localStorage.getItem("vibrations")
 
 export let firstLoad = true;
 
@@ -119,7 +119,7 @@ function renderLevel() {
 // ── Popup level-up ──
 
 function playLevelUpAnimation(type, lvl) {
-  if (canVibrate()) {
+  if (vibrations == "true") {
     navigator.vibrate(200, 100, 200, 100, 400)  
   }
 
