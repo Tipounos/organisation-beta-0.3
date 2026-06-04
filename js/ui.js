@@ -86,6 +86,7 @@ export function initAddTaskButtons(addTaskFn) {
   if (document.body.clientWidth <= 1024) {
     desktopBtn.textContent = "Ajouter une tâche";
     desktopBtn.addEventListener("click", () => addTaskPopup.classList.add("on"));
+    window.alert("mobile")
   }
 
   if (mobileBtn) {
